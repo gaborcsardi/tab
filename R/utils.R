@@ -89,8 +89,8 @@ split_long_words <- function(str, max, truncation_chr = "-") {
   break_word <- function(word) {
     nc <- col_nchar(word)
     if (nc <= max) return(word)
-    break_points <- seq(1, nc, by = max - 2)
-    res <- col_substring(word, break_points, break_points + max - 2 - 1)
+    break_points <- seq(1, nc, by = max - 1)
+    res <- col_substring(word, break_points, break_points + max - 1 - 1)
     if (length(res) == 1) {
       res
     } else {

@@ -70,11 +70,11 @@ test_that("pad_center", {
 test_that("split_long_words", {
 
   cases <- list(
-    list("thisistoolongforone", 6, "-", "this- isto- olon- gfor- one"),
-    list("a b ab thisislong no not", 6, "-", "a b ab this- islo- ng no not"),
-    list(c("onelong", "twolong"), 5, "-", c("one- lon- g", "two- lon- g")),
+    list("thisistoolongforone", 6, "-", "thisi- stool- ongfo- rone"),
+    list("a b ab thisislong no not", 6, "-", "a b ab thisi- slong no not"),
+    list(c("onelong", "twolong"), 5, "-", c("onel- ong", "twol- ong")),
     list(c("a b longi c d", "xx y longo rt rt"), 5, "-",
-         c("a b lon- gi c d", "xx y lon- go rt rt"))
+         c("a b longi c d", "xx y longo rt rt"))
   )
 
   for (c in cases) expect_equal(split_long_words(c[[1]], c[[2]], c[[3]]), c[[4]])
