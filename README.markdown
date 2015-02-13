@@ -5,7 +5,7 @@
 
 > Pretty tables at the R CLI
 
-For better user intergafe. Inspired by the
+For better user interface. Inspired by the
 [columnify](https://github.com/timoxley/columnify) project.
 
 ## Install
