@@ -1,0 +1,14 @@
+Package: tab
+Title: Pretty Tables in the Terminal
+Version: 1.0.0
+Authors@R: person("Gabor", "Csardi", , "csardi.gabor@gmail.com", role = c("aut", "cre"))
+Description: Pretty Tables in the Terminal
+    Pretty print a data frame in the R terminal. Supports word wrapping,
+    cell truncation, ANSI colors, column names, alignments, padding.
+License: MIT + file LICENSE
+URL: https://github.com/gaborcsardi/tab
+BugReports: https://github.com/gaborcsardi/tab/issues
+Imports: 
+    magrittr,
+    crayon
+Suggests: testthat
