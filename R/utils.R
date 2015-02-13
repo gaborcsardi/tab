@@ -59,9 +59,9 @@ split_into_lines_1 <- function(str, max) {
       strsplit(" ") %>%
       `[[`(1)
     lines <- list()
-    line <- character(0)
-    for (w in words) {
-      if (col_nchar(paste(line, collapse = " ")) + col_nchar(w) <= max) {
+    line <- words[1]
+    for (w in words[-1]) {
+      if (col_nchar(paste(line, collapse = " ")) + col_nchar(w) < max) {
         line <- c(line, w)
       } else {
         lines <- c(lines, list(line))
