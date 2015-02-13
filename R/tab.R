@@ -44,6 +44,7 @@ NULL
 #' @return The lines of the formatted table, invisibly.
 #'
 #' @export
+#' @importFrom methods getFunction
 #' @examples
 #' x <- data.frame(
 #'   stringsAsFactors = FALSE,

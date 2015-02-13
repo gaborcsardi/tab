@@ -10,5 +10,6 @@ URL: https://github.com/gaborcsardi/tab
 BugReports: https://github.com/gaborcsardi/tab/issues
 Imports: 
     magrittr,
-    crayon
+    crayon,
+    methods
 Suggests: testthat
