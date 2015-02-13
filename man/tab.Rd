@@ -11,6 +11,9 @@ tab(x, ...)
 
 \item{...}{Extra configuration obtions, see them below.}
 }
+\value{
+The lines of the formatted table, invisibly.
+}
 \description{
 Pretty tables in the R terminal
 }
@@ -32,7 +35,8 @@ Pretty tables in the R terminal
   \item Align left, right or center.
 }
 
-See examples below.
+It prints the table to the console via \code{base::cat}, and
+also returns the lines of the table invisibly.
 }
 \examples{
 x <- data.frame(
