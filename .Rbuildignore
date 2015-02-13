@@ -1,1 +1,4 @@
 ^tags$
+^Makefile$
+^README.Rmd$
+^README.markdown$
