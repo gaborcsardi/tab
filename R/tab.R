@@ -14,16 +14,65 @@ tab_options <- list(
   align = "left"
 )
 
-#' Pretty tables in the R terminal
-#'
-#' Pretty print a data frame.
-#'
-#' @docType package
-#' @name tab
 #' @importFrom magrittr %>%
 NULL
 
+#' Pretty tables in the R terminal
+#'
+#' @section Features:
+#' \itemize{
+#'   \item ANSI colored text via the crayon package.
+#'   \item Cell wrapping.
+#'   \item Minimum and maximum cell width.
+#'   \item Custom column spliter string.
+#'   \item Custom padding string.
+#'   \item Preservation of newlines in cells.
+#'   \item Headers.
+#'   \item Transformation functions for headers and data. By
+#'      defaults headers are in all caps, and data is formatted
+#'      with \code{base::format}.
+#'   \item Maximum table width (truncated here), defaults to
+#'      terminal width.
+#'   \item Align left, right or center.
+#' }
+#'
+#' It prints the table to the console via \code{base::cat}, and
+#' also returns the lines of the table invisibly.
+#'
+#' @param x The object to print. It will be coerced to a data frame.
+#' @param ... Extra configuration obtions, see them below.
+#' @return The lines of the formatted table, invisibly.
+#'
 #' @export
+#' @examples
+#' x <- data.frame(
+#'   stringsAsFactors = FALSE,
+#'   pkg = c("igraph", "crayon", "tab"),
+#'   version = c("0.7.1", "1.1.0", "1.0.0"),
+#'   description = c(
+#'     paste("Routines for simple graphs and network analysis.",
+#'       "igraph can handle large graphs very well and provides",
+#'       "functions for generating random and regular graphs,",
+#'       "graph visualization, centrality indices and much more."),
+#'     paste("Crayon adds support for colored terminal output on",
+#'       "terminals that support ANSI color and highlight codes.",
+#'       "ANSI color support is automatically detected.",
+#'       "Colors and highlighting can be combined and nested. New styles",
+#'       "can also be created easily. This package was inspired by",
+#'       "the chalk JavaScript project"),
+#'     paste("Pretty Tables in the terminal. Pretty print a data frame",
+#'        "in the R terminal. Supports word wrapping,\ncell truncation,",
+#'        "ANSI colors, column names, alignments, padding")
+#'   )
+#' )
+#' tab(x, max_width = 40)
+#' tab(x, min_width = 10)
+#' tab(x, max_width = 50, column_splitter = " | ")
+#'
+#' x$pkg <- crayon::red(x$pkg)
+#' tab(x, max_width = 50)
+#' tab(x, align = "right", max_width = 50, column_splitter = " | ")
+#' tab(x, max_width = 50, padding_chr = ".")
 
 tab <- function(x, ...) {
 
