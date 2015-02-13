@@ -74,6 +74,12 @@ NULL
 #' tab(x, max_width = 50)
 #' tab(x, align = "right", max_width = 50, column_splitter = " | ")
 #' tab(x, max_width = 50, padding_chr = ".")
+#'
+#' pkgs <- installed.packages()[,c("Package", "Version", "Depends",
+#'   "Imports", "Suggests", "LibPath")][1:30,]
+#' pkgs <- as.data.frame(pkgs, stringsAsFactors = FALSE)
+#' pkgs$Package <- crayon::green(pkgs$Package)
+#' tab(pkgs, heading_transform = crayon::red)
 
 tab <- function(x, ...) {
 

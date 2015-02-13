@@ -8,6 +8,8 @@
 For better user interface. Inspired by the
 [columnify](https://github.com/timoxley/columnify) project.
 
+![Screenshot](screenshot.png)
+
 ## Install
 
 Install from Github with `devtools`. You'll also need a recent `crayon` package:
