@@ -3,37 +3,37 @@
   paste0(as.character(l), as.character(r))
 }
 
-#' @importFrom crayon col_substring
+#' @importFrom ansistrings ansi_substring
 
 repeat_string <- function(str, len) {
   stopifnot(length(str) == 1)
   character(max(len) + 1) %>%
     paste(collapse = str) %>%
-    col_substring(1, len)
+    ansi_substring(1, len)
 }
 
-#' @importFrom crayon col_nchar
+#' @importFrom ansistrings ansi_nchar
 
 pad_right <- function(str, max, chr = " ") {
   str <- as.character(str)
-  length <- max - col_nchar(str)
+  length <- max - ansi_nchar(str)
   ifelse(length <= 0, str, str %+% repeat_string(chr, length))
 }
 
-#' @importFrom crayon col_nchar
+#' @importFrom ansistrings ansi_nchar
 
 pad_center <- function(str, max, chr = " ") {
   str <- as.character(str)
-  length <- max - col_nchar(str)
+  length <- max - ansi_nchar(str)
   ifelse(length <= 0, str, repeat_string(chr, floor(length / 2)) %+% str %+%
            repeat_string(chr, length - floor(length / 2)))
 }
 
-#' @importFrom crayon col_nchar
+#' @importFrom ansistrings ansi_nchar
 
 pad_left <- function(str, max, chr = " ") {
   str <- as.character(str)
-  length <- max - col_nchar(str)
+  length <- max - ansi_nchar(str)
   ifelse(length <= 0, str, repeat_string(chr, length) %+% str)
 }
 
@@ -50,7 +50,7 @@ pad <- function(str, max, chr = " ", align = c("left", "center", "right")) {
 
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 
-#' @importFrom crayon col_nchar
+#' @importFrom ansistrings ansi_nchar
 
 split_into_lines_1 <- function(str, max) {
   split_into_lines_line <- function(str) {
@@ -61,7 +61,7 @@ split_into_lines_1 <- function(str, max) {
     lines <- list()
     line <- words[1]
     for (w in words[-1]) {
-      if (col_nchar(paste(line, collapse = " ")) + col_nchar(w) < max) {
+      if (ansi_nchar(paste(line, collapse = " ")) + ansi_nchar(w) < max) {
         line <- c(line, w)
       } else {
         lines <- c(lines, list(line))
@@ -82,15 +82,15 @@ split_into_lines <- function(str, max) {
   lapply(str, split_into_lines_1, max = max)
 }
 
-#' @importFrom crayon col_strsplit col_substring
+#' @importFrom ansistrings ansi_strsplit ansi_substring
 
 split_long_words <- function(str, max, truncation_chr = "-") {
 
   break_word <- function(word) {
-    nc <- col_nchar(word)
+    nc <- ansi_nchar(word)
     if (nc <= max) return(word)
     break_points <- seq(1, nc, by = max - 1)
-    res <- col_substring(word, break_points, break_points + max - 1 - 1)
+    res <- ansi_substring(word, break_points, break_points + max - 1 - 1)
     if (length(res) == 1) {
       res
     } else {
@@ -107,15 +107,15 @@ split_long_words <- function(str, max, truncation_chr = "-") {
 
   str %>%
     trim() %>%
-    col_strsplit(split = " ") %>%
+    ansi_strsplit(split = " ") %>%
     lapply(break_words) %>%
     vapply(paste, collapse = " ", "")
 }
 
-#' @importFrom crayon col_substr
+#' @importFrom ansistrings ansi_substr
 
 truncate_string <- function(str, max) {
-  col_substr(str, 1, max)
+  ansi_substr(str, 1, max)
 }
 
 do_call <- function (f, ..., .args = list(), .env = parent.frame()) {

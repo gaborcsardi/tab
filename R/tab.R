@@ -128,7 +128,7 @@ tab <- function(x, ...) {
   ## get actual max-width between min & max
   ## based on length of data in columns
   width <- vapply(x, FUN.VALUE = 1, function(cur) {
-    col_nchar(cur) %>%
+    ansi_nchar(cur) %>%
       max(opts$min_width) %>%
       min(opts$max_width)
   })
@@ -145,7 +145,7 @@ tab <- function(x, ...) {
 
   ## recalculate column widths from truncated output/lines
   width <- vapply(x, FUN.VALUE = 1, function(cur) {
-    col_nchar(cur) %>%
+    ansi_nchar(cur) %>%
       max(opts$min_width) %>%
       min(opts$max_width)
   })

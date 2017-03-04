@@ -9,7 +9,10 @@ License: MIT + file LICENSE
 URL: https://github.com/gaborcsardi/tab
 BugReports: https://github.com/gaborcsardi/tab/issues
 Imports: 
+    ansistrings,
     magrittr,
-    crayon,
     methods
 Suggests: testthat
+Remotes:
+    gaborcsardi/ansistrings
+RoxygenNote: 6.0.1
